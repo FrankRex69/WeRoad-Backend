@@ -1,0 +1,62 @@
+version: "3.7"
+
+services:
+  postgresbase:
+    image: postgis/postgis:13-3.1-alpine
+    container_name: postgres_base_container
+    restart: unless-stopped
+    networks:
+      - proxy
+    environment:
+      - POSTGRES_HOST="${PG_HOST}"
+      - POSTGRES_DB="${PG_DB}"
+      - POSTGRES_USER="${PG_USER}"
+      - POSTGRES_PASSWORD="${PG_PASSWORD}"
+      - TZ=Europe/Rome
+      - PGTZ=Europe/Rome
+    ports:
+      - '${PG_PORT}:${PG_PORT}'
+    volumes:
+      - ./docker_volumes/postgresql_data:/var/lib/postgresql/data
+      - ./init_docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app:
+    # name image
+    image: '${IMAGE}'
+    # setup for build image (path for dockerfile e target in docker file [not mandatory])
+    networks:
+      - proxy
+    build:
+      # path Dockerfile
+      context: ./
+      # Target use in dockerfile with multiple setup (example: local, prod)
+      target: '${TARGET}'
+    # entrypoint: bash -c '${COMMAND}'
+    ports:
+      - '${APP_PORT}:${APP_PORT}'
+    depends_on:
+      - postgresbase
+    # One of the main advantages of using Docker volumes
+    # is the possibility of changing the content/configuration
+    # of a container without the need to recreate it.
+    volumes:
+     - ./backend/src:/app/backend/src
+     - ./backend/dist:/app/backend/dist
+
+  pgadmin4_base:
+    container_name: pgadmin4_base_container
+    image: dpage/pgadmin4
+    restart: always
+    networks:
+      - proxy
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
+      PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
+    ports:
+      - '${PGADMIN_PORT_HOST}:${PGADMIN_PORT_DOCKER}'
+    depends_on:
+      - postgresbase
+
+networks:
+  proxy:
+    external: true
