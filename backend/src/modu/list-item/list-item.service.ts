@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateListItemDto } from './dto/create-list-item.dto';
-import { DeleteListItemDto} from './dto/delete-list-item.dto';
 import { UpdateListItemDto } from './dto/update-list-item.dto';
 import { ListItem } from '../../entities/list-item.entity';
 
@@ -16,7 +15,7 @@ export class ListItemService {
   findAll(): Promise<ListItem[]> {
       return this.repository.find(
       {
-        order: {         
+        order: {
           id: "ASC"
         }
       }

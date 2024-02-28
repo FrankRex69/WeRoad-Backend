@@ -2,15 +2,16 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Inject, Param, Par
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 import { CreateListItemDto } from './dto/create-list-item.dto';
-import { DeleteListItemDto } from './dto/delete-list-item.dto';
 import { UpdateListItemDto} from './dto/update-list-item.dto';
 
 import { IresponseListItem } from '@commons/interfaces/list-item.interface';
 
 import { ListItemService } from './list-item.service';
+
 import { Public } from '../auth/decorators/public.decorator';
 import { AuthGuard } from '../auth/auth.guard';
 import { RoleGuard } from '../auth/roles.guard';
+
 import { Roles } from '../auth/decorators/roles.decorator';
 import { Role } from '@commons/interfaces/users.interface';
 
@@ -24,7 +25,7 @@ export class ListItemController {
   @ApiBearerAuth('access-token')
   @UseGuards(RoleGuard)
   @Roles(Role.Admin) 
-  public async findAll(): Promise<IresponseListItem[]> {       
+  public async findAll(): Promise<IresponseListItem[]> {
     return await this.service.findAll();
   }
   
