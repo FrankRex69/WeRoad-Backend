@@ -12,11 +12,11 @@ export class TravelsService {
 
       findAll(): Promise<Travels[]> {
         return this.repository.find(
-        {
-          order: {         
-            id: "ASC"
+          {
+            order: {
+              id: "ASC"
+            }
           }
-        }
-      );
-    }
+        );
+      }
 }

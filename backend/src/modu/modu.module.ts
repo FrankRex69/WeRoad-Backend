@@ -12,6 +12,7 @@ import { UsersService } from './users/users.service';
 import { UsersController } from './users/users.controller';
 import { TestModule } from './test/test.module';
 import { TravelsModule } from './travels/travels.module';
+import { TravelsBuyModule } from './travels-buy/travels-buy.module';
 
 @Global()
 @Module({
@@ -19,6 +20,7 @@ import { TravelsModule } from './travels/travels.module';
     TypeOrmModule.forFeature([ListItem, Users, Travels]),
     TestModule,
     TravelsModule,
+    TravelsBuyModule,
   ],
   controllers: [ListItemController, UsersController],
   providers: [ListItemService, UsersService]

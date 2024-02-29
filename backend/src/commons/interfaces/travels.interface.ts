@@ -13,4 +13,3 @@ export interface IresponseTravels extends INumberIdEntity {
     moods_culture: number;
     moods_party: number;
 }
-

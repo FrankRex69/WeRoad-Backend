@@ -18,6 +18,7 @@ const users_service_1 = require("./users/users.service");
 const users_controller_1 = require("./users/users.controller");
 const test_module_1 = require("./test/test.module");
 const travels_module_1 = require("./travels/travels.module");
+const travels_buy_module_1 = require("./travels-buy/travels-buy.module");
 let ModuModule = class ModuModule {
 };
 ModuModule = __decorate([
@@ -27,6 +28,7 @@ ModuModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([list_item_entity_1.ListItem, users_entity_1.Users, travels_entity_1.Travels]),
             test_module_1.TestModule,
             travels_module_1.TravelsModule,
+            travels_buy_module_1.TravelsBuyModule,
         ],
         controllers: [list_item_controller_1.ListItemController, users_controller_1.UsersController],
         providers: [list_item_service_1.ListItemService, users_service_1.UsersService]
