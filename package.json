@@ -1,0 +1,13 @@
+{
+  "name": "weroad-backend",
+  "version": "1.0.0",
+  "description": "```bash\r   - Backend with Nodejs and Nestjs framework;\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev-local-docker": "cd backend && npm i && cd .. && docker compose -f docker-compose-dev-local.yml --env-file ./backend/.env up"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
