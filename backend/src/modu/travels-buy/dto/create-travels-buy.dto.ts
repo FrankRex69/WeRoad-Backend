@@ -4,7 +4,11 @@ import { IsNumber, IsString } from 'class-validator';
 export class CreateTravelsBuyDto {
   @ApiProperty()
   @IsNumber()
-  travels_id: number;
+  travelsid: number;
+
+  @ApiProperty()
+  @IsNumber()
+  pricetot: number;
 
   @ApiProperty()
   @IsString()

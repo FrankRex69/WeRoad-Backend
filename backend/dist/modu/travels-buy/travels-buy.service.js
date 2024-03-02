@@ -28,6 +28,16 @@ let TravelsBuyService = class TravelsBuyService {
             }
         });
     }
+    async create(dto) {
+        return this.repository.save(dto);
+    }
+    async remove(id) {
+        const listItem = await this.repository.findOne({ where: { id: id } });
+        if (!listItem) {
+            throw new common_1.NotFoundException(`Commission #${id} not found`);
+        }
+        return await this.repository.softRemove(listItem);
+    }
 };
 TravelsBuyService = __decorate([
     common_1.Injectable(),

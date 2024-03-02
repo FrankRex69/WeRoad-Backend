@@ -18,7 +18,12 @@ __decorate([
     swagger_1.ApiProperty(),
     class_validator_1.IsNumber(),
     __metadata("design:type", Number)
-], CreateTravelsBuyDto.prototype, "travels_id", void 0);
+], CreateTravelsBuyDto.prototype, "travelsid", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    class_validator_1.IsNumber(),
+    __metadata("design:type", Number)
+], CreateTravelsBuyDto.prototype, "pricetot", void 0);
 __decorate([
     swagger_1.ApiProperty(),
     class_validator_1.IsString(),

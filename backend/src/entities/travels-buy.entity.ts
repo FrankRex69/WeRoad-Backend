@@ -5,7 +5,10 @@ import { NumberIdEntity } from './base.entity';
 export class TravelsBuy extends NumberIdEntity{
     
     @Column({nullable: true})
-      travels_id: number;  
+      travelsid: number;
+      
+    @Column({nullable: true})
+      pricetot: number;
 
     @Column({nullable: true})
       email: string;

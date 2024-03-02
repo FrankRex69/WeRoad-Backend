@@ -17,7 +17,11 @@ let TravelsBuy = class TravelsBuy extends base_entity_1.NumberIdEntity {
 __decorate([
     typeorm_1.Column({ nullable: true }),
     __metadata("design:type", Number)
-], TravelsBuy.prototype, "travels_id", void 0);
+], TravelsBuy.prototype, "travelsid", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", Number)
+], TravelsBuy.prototype, "pricetot", void 0);
 __decorate([
     typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)

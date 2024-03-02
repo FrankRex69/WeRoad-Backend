@@ -3,8 +3,7 @@
   - Backend with Nodejs and Nestjs framework;
 ```
 
-## Installation backend/frontend
-
+## Installation backend
 ```bash
 # Install package's backend (in backend directory)
 $ npm install
